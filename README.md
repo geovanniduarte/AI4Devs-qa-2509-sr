@@ -86,6 +86,53 @@ npm start
 
 The backend server will be running at http://localhost:3010, and the frontend will be available at http://localhost:3000.
 
+## 🧪 E2E Testing with Playwright
+
+This project includes a comprehensive End-to-End (E2E) testing suite using Playwright with BDD (Behavior-Driven Development) principles.
+
+### Features
+- ✅ **19 E2E tests** covering critical user flows
+- ✅ **Page Object Model** for maintainable test code
+- ✅ **Multi-browser support** (Chromium, Firefox, WebKit)
+- ✅ **Automatic screenshots and videos** on test failures
+- ✅ **HTML reports** with interactive debugging
+- ✅ **BDD approach** (Given-When-Then pattern)
+
+### Quick Start
+
+```bash
+# Install Playwright browsers (one-time setup)
+cd frontend
+npx playwright install
+
+# Run all E2E tests
+npm run test:e2e
+
+# Run with interactive UI
+npm run test:e2e:ui
+
+# View test report
+npm run test:e2e:report
+```
+
+### Test Suites
+
+**Candidate Creation Flow (8 tests)**
+- Navigation from dashboard to form
+- Basic candidate creation
+- Complete candidate with education & experience
+- Multiple work experiences and educations
+- Form validation
+
+**Positions Flow (11 tests)**
+- View positions list
+- Filter by status
+- Open position details
+- Verify interview flow
+- Navigate through the application
+
+📖 **Full documentation:** [frontend/playwright/integration/README.md](frontend/playwright/integration/README.md)
+
 ## Docker y PostgreSQL
 
 This project uses Docker to run a PostgreSQL database. Here's how to get it up and running:
