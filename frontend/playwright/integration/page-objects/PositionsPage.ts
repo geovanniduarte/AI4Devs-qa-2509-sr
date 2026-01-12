@@ -8,8 +8,6 @@ import { BasePage } from './BasePage';
 export class PositionsPage extends BasePage {
   // Selectores de elementos de la página
   private readonly backToDashboardButton = 'button:has-text("Volver al Dashboard")';
-  private readonly positionsTitle = 'h1:has-text("Posiciones")';
-  private readonly filterSelect = 'select#statusFilter, select[name="status"]';
   private readonly positionCards = '.card';
   private readonly positionCardTitle = '.card h5, .card .card-title';
 
@@ -27,17 +25,19 @@ export class PositionsPage extends BasePage {
 
   /**
    * Esperar a que la página cargue completamente
+   * Usa getByRole para ser independiente del nivel de heading (h1, h2, etc.)
    */
   async waitForPageToLoad() {
-    await this.waitForSelector(this.positionsTitle);
+    await this.page.getByRole('heading', { name: 'Posiciones' }).waitFor({ state: 'visible' });
   }
 
   /**
    * Filtrar posiciones por estado
-   * @param status - Estado de la posición (Open, Cerrado, etc.)
+   * Usa data-testid para identificar el select de estado de forma estable
+   * @param status - Estado de la posición (open, filled, closed, draft)
    */
   async filterByStatus(status: string) {
-    await this.page.selectOption(this.filterSelect, status);
+    await this.page.getByTestId('status-filter').selectOption(status);
     // Esperar un momento para que se aplique el filtro
     await this.page.waitForTimeout(500);
   }
@@ -135,14 +135,15 @@ export class PositionsPage extends BasePage {
    * Verificar que el filtro de estado está visible
    */
   async verifyFilterIsVisible() {
-    await expect(this.page.locator(this.filterSelect)).toBeVisible();
+    await expect(this.page.getByTestId('status-filter')).toBeVisible();
   }
 
   /**
    * Verificar que el título de la página es correcto
+   * Usa getByRole para ser más resiliente
    */
   async verifyPageTitle() {
-    await expect(this.page.locator(this.positionsTitle)).toBeVisible();
+    await expect(this.page.getByRole('heading', { name: 'Posiciones' })).toBeVisible();
   }
 
   /**

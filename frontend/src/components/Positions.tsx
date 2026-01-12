@@ -51,13 +51,26 @@ const Positions: React.FC = () => {
             <h2 className="text-center mb-4">Posiciones</h2>
             <Row className="mb-4">
                 <Col md={3}>
-                    <Form.Control type="text" placeholder="Buscar por título" />
+                    <Form.Control 
+                        type="text" 
+                        placeholder="Buscar por título"
+                        data-testid="search-title-input"
+                    />
                 </Col>
                 <Col md={3}>
-                    <Form.Control type="date" placeholder="Buscar por fecha" />
+                    <Form.Control 
+                        type="date" 
+                        placeholder="Buscar por fecha"
+                        data-testid="search-date-input"
+                    />
                 </Col>
                 <Col md={3}>
-                    <Form.Control as="select">
+                    <Form.Control 
+                        as="select"
+                        data-testid="status-filter"
+                        name="status"
+                        id="statusFilter"
+                    >
                         <option value="">Estado</option>
                         <option value="open">Abierto</option>
                         <option value="filled">Contratado</option>
@@ -66,7 +79,12 @@ const Positions: React.FC = () => {
                     </Form.Control>
                 </Col>
                 <Col md={3}>
-                    <Form.Control as="select">
+                    <Form.Control 
+                        as="select"
+                        data-testid="manager-filter"
+                        name="manager"
+                        id="managerFilter"
+                    >
                         <option value="">Manager</option>
                         <option value="john_doe">John Doe</option>
                         <option value="jane_smith">Jane Smith</option>

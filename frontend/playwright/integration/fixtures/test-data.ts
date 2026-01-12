@@ -141,11 +141,15 @@ export const testPositions = {
 /**
  * Estados posibles de una posición
  */
+/**
+ * Estados de posiciones disponibles en el filtro
+ * Valores coinciden con los option values del select en Positions.tsx
+ */
 export const positionStatuses = {
-  open: 'Open',
-  closed: 'Cerrado',
-  hired: 'Contratado',
-  draft: 'Borrador'
+  open: 'open',        // Abierto
+  closed: 'closed',    // Cerrado
+  filled: 'filled',    // Contratado
+  draft: 'draft'       // Borrador
 };
 
 /**

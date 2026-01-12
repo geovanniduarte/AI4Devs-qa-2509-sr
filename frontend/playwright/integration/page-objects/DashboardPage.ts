@@ -8,7 +8,6 @@ import { BasePage } from './BasePage';
 export class DashboardPage extends BasePage {
   // Selectores de elementos de la página
   private readonly logoSelector = 'img[alt="LTI Logo"]';
-  private readonly titleSelector = 'h1:has-text("Dashboard del Reclutador")';
   private readonly addCandidateButtonSelector = 'a[href="/add-candidate"]';
   private readonly positionsButtonSelector = 'a[href="/positions"]';
 
@@ -26,10 +25,11 @@ export class DashboardPage extends BasePage {
 
   /**
    * Esperar a que el dashboard cargue completamente
+   * Usa getByRole para ser más resiliente con el heading
    */
   async waitForDashboardToLoad() {
     await this.waitForSelector(this.logoSelector);
-    await this.waitForSelector(this.titleSelector);
+    await this.page.getByRole('heading', { name: /Dashboard del Reclutador/i }).waitFor({ state: 'visible' });
   }
 
   /**
@@ -55,7 +55,7 @@ export class DashboardPage extends BasePage {
    */
   async verifyDashboardIsVisible() {
     await expect(this.page.locator(this.logoSelector)).toBeVisible();
-    await expect(this.page.locator(this.titleSelector)).toBeVisible();
+    await expect(this.page.getByRole('heading', { name: /Dashboard del Reclutador/i })).toBeVisible();
     await expect(this.page.locator(this.addCandidateButtonSelector)).toBeVisible();
     await expect(this.page.locator(this.positionsButtonSelector)).toBeVisible();
   }
@@ -64,7 +64,7 @@ export class DashboardPage extends BasePage {
    * Verificar el título del dashboard
    */
   async verifyTitle() {
-    await expect(this.page.locator(this.titleSelector)).toContainText('Dashboard del Reclutador');
+    await expect(this.page.getByRole('heading', { name: /Dashboard del Reclutador/i })).toContainText('Dashboard del Reclutador');
   }
 
   /**
