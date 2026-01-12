@@ -105,18 +105,17 @@ npm run test:e2e:report    # Ver reporte HTML
 npm run test:e2e:chrome    # Solo Chromium
 ```
 
-## ⚠️ Nota Importante
+## ✅ Estado de Instalación
 
-Para ejecutar los tests, el usuario debe:
+**Dependencias de Playwright**: ✅ INSTALADAS
 
-1. **Instalar Playwright** (problemas de npm resueltos manualmente):
-   ```bash
-   cd frontend
-   npm install
-   npx playwright install
-   ```
+Las dependencias han sido instaladas correctamente y el proyecto está listo para ejecutar tests.
 
-2. **Iniciar servicios**:
+## 🚀 Ejecutar Tests
+
+Para ejecutar los tests, asegúrate de que los servicios estén corriendo:
+
+1. **Iniciar servicios**:
    ```bash
    # Terminal 1: Backend
    cd backend
@@ -130,11 +129,33 @@ Para ejecutar los tests, el usuario debe:
    docker-compose up -d
    ```
 
-3. **Ejecutar tests**:
+2. **Ejecutar tests**:
    ```bash
    cd frontend
    npm run test:e2e
    ```
+
+### Comandos Disponibles
+
+```bash
+# Ejecutar todos los tests (headless)
+npm run test:e2e
+
+# Ejecutar con UI interactiva
+npm run test:e2e:ui
+
+# Ejecutar con navegador visible
+npm run test:e2e:headed
+
+# Modo debug paso a paso
+npm run test:e2e:debug
+
+# Ver reporte HTML de última ejecución
+npm run test:e2e:report
+
+# Ejecutar solo en Chromium
+npm run test:e2e:chrome
+```
 
 ## 🎓 Principios Aplicados
 
@@ -166,6 +187,7 @@ La integración de Playwright está **completa y lista para usar**. Todos los ar
 ---
 
 **Fecha de implementación:** 2026-01-12  
-**Estado:** ✅ COMPLETO  
-**Pendiente:** Instalación de dependencias por el usuario
+**Estado:** ✅ COMPLETO Y LISTO PARA USAR  
+**Dependencias:** ✅ INSTALADAS  
+**Navegadores:** ✅ DESCARGADOS
 

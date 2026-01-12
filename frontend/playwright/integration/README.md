@@ -38,22 +38,27 @@ Antes de ejecutar los tests, asegúrate de tener:
 
 ## 📦 Instalación
 
-### 1. Instalar dependencias
+### ✅ Estado: Dependencias Instaladas
+
+Las dependencias de Playwright ya están instaladas en el proyecto. Los navegadores (Chromium, Firefox, WebKit) han sido descargados.
+
+### Verificar Instalación
+
+```bash
+# Verificar versión de Playwright
+npx playwright --version
+
+# Debería mostrar: Version 1.40.0 o superior
+```
+
+Si necesitas reinstalar los navegadores:
+
+Si necesitas reinstalar los navegadores:
 
 ```bash
 cd frontend
-npm install
-```
-
-### 2. Instalar navegadores de Playwright
-
-```bash
 npx playwright install
 ```
-
-Esto descargará los navegadores necesarios (Chromium, Firefox, WebKit).
-
-### 3. Verificar instalación
 
 ```bash
 npx playwright --version
